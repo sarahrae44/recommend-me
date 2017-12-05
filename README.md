@@ -9,9 +9,9 @@ Once signed in, user can create a recommendation or ask for a recommendation (th
 There will be different categories to choose from (web developer, web designer, UI/UX, data science, marketing, project management, etc)
 
 Fields for recommendation:
-Name
-How recommender knows recommendee
-Blank field for recommendation
-Date recommended
+- Name
+- How recommender knows recommendee
+- Blank field for recommendation
+- Date recommended
 
 Option for recommender to edit/delete recommendation when logged in
