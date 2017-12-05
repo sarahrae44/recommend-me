@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sarahrae44/recommend-me/issues"
   },
-  "homepage": "https://github.com/sarahrae44/recommend-me#readme"
+  "homepage": "https://github.com/sarahrae44/recommend-me#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
