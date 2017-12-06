@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/sarahrae44/recommend-me#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mongoose": "^4.13.6"
   }
 }
