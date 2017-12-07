@@ -19,3 +19,15 @@ Fields for recommendation:
 - Date recommended
 
 Option for recommender to edit/delete recommendation when logged in
+
+Time:
+
+12/4 - 1 on code
+
+12/5 - .5 on user stories and README
+
+12/6 - .5 on wireframe, 1 on code
+
+12/7 - .5 on wireframe
+
+
