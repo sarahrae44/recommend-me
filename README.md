@@ -8,7 +8,7 @@ Wireframe: https://xd.adobe.com/view/d2e3daba-0a1c-4eac-8d46-2238292a2f2a/
 
 User stories:
 
-Once signed in, user can create a recommendation or ask for a recommendation (there will also be an option to invite someone to join if user needs a recommendation from someone who isn't a member)
+Once signed in, user can create a recommendation or ask for a recommendation (there will also be an option to invite someone to join if user requests a recommendation from someone who isn't a member)
 
 There will be different categories to choose from (web developer, web designer, UI/UX, data science, marketing, project management, etc)
 
