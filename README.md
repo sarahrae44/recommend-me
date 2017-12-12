@@ -30,4 +30,8 @@ Time:
 
 12/7 - .5 on wireframe
 
+12/11 - .25 on styles
+
+12/12 - .5 on wireframe
+
 
