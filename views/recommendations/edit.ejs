@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/app.css">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Edit <%=recommendation.title%>'s Info</h1>
+        <nav>
+          <ul>
+            <li>
+              <a href="/"><button>Home</button></a>
+            </li>
+            <li>
+              <a href="/recommendations"><button>Recommendations Index</button></a>
+            </li>
+            <%# <li>
+              <a href="/sessions/logout"><button>Log Out</button></a>
+            </li>%>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h2>Recommendation Attributes</h2>
+        <form action="/recommendations/<%=recommendation._id%>?_method=PUT" method="post">
+          <select name="recommenderId">
+            <% for(let i = 0; i < recommenders.length; i++) { %>
+            <option value="<%=recommendations[i]._id%>"
+              <% if(recommenders[i]._id.toString() === recommendationRecommender._id.toString()){ %>
+              selected
+            <% } %>
+          >
+              <%=recommenders[i].name%>
+            </option>
+          <% } %>
+          </select><br/>
+          <input type="text" name="title" value="<%=recommendation.title%>"/><br/>
+          <textarea name="content"><%=recommendation.content%></textarea><br/>
+          <input type="submit" value="Update Recommendation"/>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>

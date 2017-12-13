@@ -9,28 +9,29 @@
 	<body>
 		<header>
 			<h1><%=rec.title%></h1>
+      <small>by: <a href="/recommenders/<%=recommender._id%>"><%=recommender.name%></a></small>
 			<nav>
 				<ul>
 					<li>
 						<a href="/">Home</a>
 					</li>
 					<li>
-						<a href="/recs">Recommendations Index</a>
+						<a href="/recommendations">Recommendations Index</a>
 					</li>
 				</ul>
 			</nav>
 		</header>
 		<main>
 			<section>
-				<%=rec.content%>
+				<%=recommendation.content%>
 			</section>
 			<section>
-			    <form action="/recs/<%=rec._id%>?_method=DELETE" method="post">
+			    <form action="/recommendations/<%=recommendation._id%>?_method=DELETE" method="post">
 			        <input type="submit" value="Delete Recommendation"/>
 			    </form>
 			</section>
 			<section>
-			    <a href="/recs/<%=rec._id%>/edit">Edit</a>
+			    <a href="/recommendations/<%=recommendation._id%>/edit">Edit</a>
 			</section>
 		</main>
 	</body>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<link rel="stylesheet" href="/css/app.css">
+	</head>
+	<body>
+		<header>
+			<h1>Show Page for <%=recommender.name%></h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+					<li>
+						<a href="/recommenders">Recommenders Index</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<section>
+				<h2>Recommender Attributes:</h2>
+        <ul>
+          <li>Name: <%=recommender.name%></li>
+        </ul>
+			</section>
+			<section>
+        <h2>Recommendations written by this recommender:</h2>
+			    <ul>
+            <% for(let i = 0; i < recommender.recommendations.length; i++) { %>
+            <li><a href="/recommendations/<%=recommender.recommendations[i]._id%>"><%=recommender.recommendations[i].title%></a></li>
+            <% } %>
+          </ul>
+			</section>
+			<section>
+			    <a href="/recommenders/<%=recommender._id%>/edit">Edit</a>
+			</section>
+      <section>
+        <form action="/recommenders/<%=recommender._id%>?_method=DELETE" method="post">
+          <input type="submit" value="Delete Recommender"/>
+        </form>
+      </section>
+		</main>
+	</body>
+</html>

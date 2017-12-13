@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
-const Rec = require('./recs.js');
 
 const userSchema = new mongoose.Schema({
- username: String,
+ username: { type: String, unique: true },
  password: String,
- photo: String,
- recs: [Rec.schema]
+ photo: String
 })
 
 const User = mongoose.model('User', userSchema);

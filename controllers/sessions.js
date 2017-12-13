@@ -17,10 +17,10 @@ router.post('/login', (req, res) => {
     if(user){
       if(bcrypt.compareSync(req.body.password, user.password)){
         req.session.message = '';
-        req.session.username = req.body.username
+        req.session.username = req.body.username;
         req.session.logged = true;
         console.log(req.session);
-        res.redirect('/')
+        res.redirect('/recommenders')
       } else {
         req.session.message = 'username or password are incorrect';
         res.redirect('/sessions/login')
@@ -43,7 +43,7 @@ router.post('/registration', (req, res) => {
     req.session.message = '';
     req.session.username = user.username;
     req.session.logged = true;
-    res.redirect('/recs')
+    res.redirect('/recommenders')
   })
 })
 

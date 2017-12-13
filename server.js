@@ -9,13 +9,15 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.use(session({
-  secret: 'recommendationsrule',
+  secret: 'recommendations rule',
   resave: false,
   saveUninitialized: false
 }));
 
-const recsController = require('./controllers/recs.js');
-app.use('/recs', recsController);
+const recommendersController = require('./controllers/recommenders.js');
+app.use('/recommenders', recommendersController);
+const recommendationsController = require('./controllers/recommendations.js');
+app.use('/recommendations', recommendationsController);
 
 const sessionsController =
 require('./controllers/sessions.js');

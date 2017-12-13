@@ -8,25 +8,24 @@
 	</head>
 	<body>
 		<header>
-			<h1>Recommendations</h1>
+			<h1>Recommenders</h1>
 			<nav>
 				<ul>
 					<li>
 						<a href="/">Home</a>
 					</li>
 					<li>
-						<a href="/recs/new">Write a new recommendation</a>
+						<a href="/recommenders/new">Create a new recommender</a>
 					</li>
 				</ul>
 			</nav>
 		</header>
     <main>
-			<h2>List of Recommendations you've made</h2>
+			<h2>List of Recommenders</h2>
 			<ul>
-				<% for(let i = 0; i < recs.length; i++){ %>
+				<% for(let i = 0; i < recommenders.length; i++){ %>
 					<li>
-						<a href="/recs/<%=recs[i]._id%>"><%=recs[i].title%></a><br/>
-
+						<a href="/recommenders/<%=recommenders[i]._id%>"><%=recommenders[i].name%></a>
 					</li>
 				<% } %>
 			</ul>
