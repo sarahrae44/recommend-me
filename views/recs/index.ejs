@@ -20,5 +20,16 @@
 				</ul>
 			</nav>
 		</header>
+    <main>
+			<h2>List of Recommendations you've made</h2>
+			<ul>
+				<% for(let i = 0; i < recs.length; i++){ %>
+					<li>
+						<a href="/recs/<%=recs[i]._id%>"><%=recs[i].title%></a><br/>
+
+					</li>
+				<% } %>
+			</ul>
+		</main>
 	</body>
 </html>

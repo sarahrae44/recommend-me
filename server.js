@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({
   secret: 'recommendationsrule',
   resave: false,
-  saveUnitialized: false
+  saveUninitialized: false
 }));
 
 const recsController = require('./controllers/recs.js');
@@ -27,8 +27,12 @@ app.get('/', (req, res) => {
 
 app.use(express.static('public'));
 
-const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/recs'
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/recletters'
 mongoose.connect(mongoUri);
+
+mongoose.connection.once('open', () => {
+  console.log('connected to mongo');
+});
 
 const port = process.env.PORT || 3000;
 
