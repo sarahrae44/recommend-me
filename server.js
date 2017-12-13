@@ -14,6 +14,9 @@ app.use(session({
   saveUnitialized: false
 }));
 
+const recsController = require('./controllers/recs.js');
+app.use('/recs', recsController);
+
 const sessionsController =
 require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
