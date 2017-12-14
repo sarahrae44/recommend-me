@@ -35,3 +35,5 @@ Time:
 12/12 - .5 on wireframe
 
 12/13 - 3.5 on code
+
+12/14 - 2 on code
