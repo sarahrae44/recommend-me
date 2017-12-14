@@ -20,7 +20,7 @@ const recommendationsController = require('./controllers/recommendations.js');
 app.use('/recommendations', recommendationsController);
 
 const sessionsController =
-require('./controllers/sessions.js');
+require('./controllers/session.js');
 app.use('/sessions', sessionsController);
 
 app.get('/', (req, res) => {
@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.use(express.static('public'));
 
-const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/recletters'
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/i-recommend'
 mongoose.connect(mongoUri);
 
 mongoose.connection.once('open', () => {

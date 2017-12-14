@@ -1,5 +1,5 @@
 const express = require('express');
-const router= express.Router();
+const router = express.Router();
 const Recommendation = require('../models/recommendations.js');
 const Recommender = require('../models/recommenders.js');
 
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get(':/id', (req, res) => {
+router.get('/:id', (req, res) => {
   Recommendation.findById(req.params.id, (err, foundRecommendation) => {
     Recommender.findOne({'recommendations._id': req.params.id}, (err, foundRecommender) => {
       res.render('recommendations/show.ejs', {
@@ -59,7 +59,7 @@ router.delete('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   Recommendation.findById(req.params.id, (err, foundRecommendation) => {
     Recommender.find({}, (err, allRecommenders) => {
-      Recommender.findOne({'recommendations._id': req.params.id}, (err, foundRecRecommender) => {
+      Recommender.findOne({'recommendations._id': req.params.id}, (err, foundRecommendationRecommender) => {
         res.render('recommendations/edit.ejs', {
           recommendation: foundRecommendation,
           recommenders: allRecommenders,
@@ -72,7 +72,7 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id', (req, res) => {
   Recommendation.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedRecommendation) => {
-    Recommender.findOne({'recommendations._id': req.params.id}, (err, foundRecommendationRecommender) => {
+    Recommender.findOne({'recommendations._id': req.params.id}, (err, foundRecommender) => {
       if(foundRecommender._id.toString() !== req.body.recommenderId){
         foundRecommender.recommendations.id(req.params.id).remove();
         foundRecommender.save((err, savedFoundRecommender) => {

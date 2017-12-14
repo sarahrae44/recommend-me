@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const recSchema = mongoose.Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true},
-  recomendee: { type: String, required: true},
-  date: { type: String, required: true}
+const recommendationSchema = mongoose.Schema({
+  title: String,
+  content: String,
+  recomendee: String,
+  date: String
 });
 
-const Rec = mongoose.model('Rec', recSchema);
+const Recommendation = mongoose.model('Recommendation', recommendationSchema);
 
-module.exports = Rec;
+module.exports = Recommendation;
