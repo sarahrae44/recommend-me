@@ -20,7 +20,7 @@ router.post('/login', (req, res) => {
         req.session.username = req.body.username;
         req.session.logged = true;
         console.log(req.session);
-        res.redirect('/recommenders')
+        res.redirect('/')
       } else {
         req.session.message = 'username or password are incorrect';
         res.redirect('/sessions/login')

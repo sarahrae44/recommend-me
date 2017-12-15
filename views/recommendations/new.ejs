@@ -22,8 +22,8 @@
 		</header>
 		<main>
 			<form action="/recommendations" method="post">
-        <select name="recommenderId">
-          <% for(let i = 0; i < recommenders.length; i++) { %>
+        <select name="userId">
+          <% for(let i = 0; i < users.length; i++) { %>
           <option value="<%=recommenders[i]._id%>"><%=recommenders[i].name%></option>
           <% } %>
         </select><br/>
