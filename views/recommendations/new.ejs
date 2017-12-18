@@ -24,7 +24,7 @@
 			<form action="/recommendations" method="post">
         <select name="userId">
           <% for(let i = 0; i < users.length; i++) { %>
-          <option value="<%=recommenders[i]._id%>"><%=recommenders[i].name%></option>
+          <option value="<%=users[i]._id%>"><%=users[i].username%></option>
           <% } %>
         </select><br/>
 				I am recommending: <input type="text" name="recommendeename" /><br/>

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Recommendation = require('../models/recommendations.js');
-const Recommender = require('../models/recommenders.js');
+// const Recommender = require('../models/recommenders.js');
+const User = require('../models/users.js');
 
 router.get('/', (req, res) => {
   if(req.session.logged){
@@ -16,18 +17,18 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  Recommender.find({}, (err, allRecommenders) => {
+  User.find({}, (err, allUsers) => {
     res.render('recommendations/new.ejs', {
-      recommenders: allRecommenders
+      users: allUsers
     });
   });
 });
 
 router.post('/', (req, res) => {
-  Recommender.findById(req.body.recommenderId, (err, foundRecommender) => {
+  User.findById(req.body.userId, (err, foundUser) => {
     Recommendation.create(req.body, (err, createdRecommendation) => {
-      foundRecommender.recommendations.push(createdRecommendation);
-      foundRecommender.save((err, data) => {
+      foundUser.recommendations.push(createdRecommendation);
+      foundUser.save((err, data) => {
         res.redirect('/recommendations');
       });
     });
@@ -36,9 +37,9 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   Recommendation.findById(req.params.id, (err, foundRecommendation) => {
-    Recommender.findOne({'recommendations._id': req.params.id}, (err, foundRecommender) => {
+    User.findOne({'recommendations._id': req.params.id}, (err, foundUser) => {
       res.render('recommendations/show.ejs', {
-        recommender: foundRecommender,
+        user: foundUser,
         recommendation: foundRecommendation
       });
     })
@@ -47,9 +48,9 @@ router.get('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   Recommendation.findByIdAndRemove(req.params.id, (err, foundRecommendation) => {
-    Recommender.findOne({'recommendations._id':req.params.id}, (err, foundRecommender) => {
-      foundRecommender.recommendations.id(req.params.id).remove();
-      foundRecommender.save((err, data) => {
+    User.findOne({'recommendations._id':req.params.id}, (err, foundUser) => {
+      foundUser.recommendations.id(req.params.id).remove();
+      foundUser.save((err, data) => {
         res.redirect('/recommendations');
       });
     });
@@ -58,12 +59,12 @@ router.delete('/:id', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   Recommendation.findById(req.params.id, (err, foundRecommendation) => {
-    Recommender.find({}, (err, allRecommenders) => {
-      Recommender.findOne({'recommendations._id': req.params.id}, (err, foundRecommendationRecommender) => {
+    User.find({}, (err, allUsers) => {
+      User.findOne({'recommendations._id': req.params.id}, (err, foundRecommendationUser) => {
         res.render('recommendations/edit.ejs', {
           recommendation: foundRecommendation,
-          recommenders: allRecommenders,
-          recommendationRecommender: foundRecommendationRecommender
+          users: allUsers,
+          recommendationUser: foundRecommendationUser
         });
       });
     });
@@ -72,21 +73,21 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id', (req, res) => {
   Recommendation.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedRecommendation) => {
-    Recommender.findOne({'recommendations._id': req.params.id}, (err, foundRecommender) => {
-      if(foundRecommender._id.toString() !== req.body.recommenderId){
-        foundRecommender.recommendations.id(req.params.id).remove();
-        foundRecommender.save((err, savedFoundRecommender) => {
-          Recommender.findById(req.body.recommenderId, (err, newRecommender) => {
-            newRecommender.recommendations.push(updatedRecommendation);
-            newRecommender.save((err, savedNewRecommender) => {
+    User.findOne({'recommendations._id': req.params.id}, (err, foundUser) => {
+      if(foundUser._id.toString() !== req.body.userId){
+        foundUser.recommendations.id(req.params.id).remove();
+        foundUser.save((err, savedFoundUser) => {
+          User.findById(req.body.userId, (err, newUser) => {
+            newUser.recommendations.push(updatedRecommendation);
+            newUser.save((err, savedNewUser) => {
               res.redirect('/recommendations/'+req.params.id);
             });
           });
         });
       } else {
-        foundRecommender.recommendations.id(req.params.id).remove();
-        foundRecommender.recommendations.push(updatedRecommendation);
-        foundRecommender.save((err, data) => {
+        foundUser.recommendations.id(req.params.id).remove();
+        foundUser.recommendations.push(updatedRecommendation);
+        foundUser.save((err, data) => {
           res.redirect('/recommendations/'+req.params.id);
         });
       }

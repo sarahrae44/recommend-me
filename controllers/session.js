@@ -43,7 +43,7 @@ router.post('/registration', (req, res) => {
     req.session.message = '';
     req.session.username = user.username;
     req.session.logged = true;
-    res.redirect('/recommenders')
+    res.redirect('/')
   })
 })
 

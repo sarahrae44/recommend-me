@@ -33,11 +33,11 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   Recommender.findByIdAndRemove(req.params.id, (err, foundRecommender) => {
     const recommendationIds = [];
-    for(let i = 0; i < foundRecommender.recommendcations.length; i++) {
+    for(let i = 0; i < foundRecommender.recommendations.length; i++) {
       recommendationIds.push(foundRecommender.recommendations[i]._id);
     }
     Recommendation.remove({ _id: {
-        $in: recommenationIds
+        $in: recommendationIds
       }
     }, (err, data) => {
       res.redirect('/recommenders');

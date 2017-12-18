@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
  username: { type: String, unique: true },
  password: String,
  photo: String,
- // recommendations: String,
+ recommendations: Array,
  // [Recommendation.schema],
  recommendationsWritten: String
 })
