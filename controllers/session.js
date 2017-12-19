@@ -12,6 +12,10 @@ router.get('/register', (req, res) => {
   res.render('users/register.ejs', {})
 })
 
+router.get('/account', (req, res) => {
+  res.render('users/account.ejs', {})
+})
+
 router.post('/login', (req, res) => {
   User.findOne({ username: req.body.username }, (err, user) => {
     if(user){
@@ -20,7 +24,7 @@ router.post('/login', (req, res) => {
         req.session.username = req.body.username;
         req.session.logged = true;
         console.log(req.session);
-        res.redirect('/')
+        res.redirect('/sessions/account')
       } else {
         req.session.message = 'username or password are incorrect';
         res.redirect('/sessions/login')
@@ -43,7 +47,7 @@ router.post('/registration', (req, res) => {
     req.session.message = '';
     req.session.username = user.username;
     req.session.logged = true;
-    res.redirect('/')
+    res.redirect('/sessions/account')
   })
 })
 
@@ -56,5 +60,8 @@ router.get('/logout', (req, res) => {
     }
   })
 })
+
+
+
 
 module.exports = router;
