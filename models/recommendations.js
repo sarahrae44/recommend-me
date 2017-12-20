@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const User = require('./users.js');
 
-const recommendationSchema = mongoose.Schema({
+const recommendationSchema = new mongoose.Schema({
   title: String,
   content: String,
   recomendee: String,
   date: String,
-  userId: [User.schema]
+  username: String
 });
 
 const Recommendation = mongoose.model('Recommendation', recommendationSchema);
