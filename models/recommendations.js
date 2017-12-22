@@ -4,9 +4,12 @@ const User = require('./users.js');
 const recommendationSchema = new mongoose.Schema({
   title: String,
   content: String,
-  recomendee: String,
+  // recommenderEmail: String,
+  // recommenderName: String,
+  requestNote: String,
   date: String,
-  username: String
+  username: String,
+  recommendee: String
 });
 
 const Recommendation = mongoose.model('Recommendation', recommendationSchema);

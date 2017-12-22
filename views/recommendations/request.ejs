@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/app.css">
+	</head>
+	<body>
+		<header>
+			<h1>Request a recommendation</h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+          <li>
+						<a href="/recommendations">Recommendations Index</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+      Who would you like to request a recommendation from?
+      <form>
+        <input type="hidden" name="recommendee">
+        Email Address: <input type="text" name="recommenderEmail"><br/>
+        Name: <input type="text" name="recommenderName"><br/>
+        Note (optional): <input type="text" name="requestNote"><br/>
+        <input type="submit" value="Request Recommendation"/>
+			</form>
+		</main>
+	</body>
+</html>

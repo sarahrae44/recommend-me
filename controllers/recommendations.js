@@ -16,6 +16,15 @@ router.get('/', (req, res) => {
   }
 });
 
+router.get('/request', (req, res) => {
+  if(req.session.logged){
+    res.render('recommendations/request.ejs', {
+      });
+  } else {
+    res.redirect('/sessions/login')
+  }
+});
+
 router.get('/new', (req, res) => {
   User.find({}, (err, allUsers) => {
     res.render('recommendations/new.ejs', {
