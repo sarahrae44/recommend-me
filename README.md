@@ -47,3 +47,5 @@ Time:
 12/20 - .75 on code
 
 12/22 - .75 on code
+
+12/23 - 1/2 - Christmas break
