@@ -3,3 +3,11 @@ body {
   width: 100%;
   color: navy;
 }
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline-block;
+}
