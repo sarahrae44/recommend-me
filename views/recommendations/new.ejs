@@ -22,11 +22,20 @@
 		</header>
 		<main>
 			<form action="/recommendations" method="post">
-        <select name="userId">
+        I am recommending: <input type="text" placeholder="Search..."><br/>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" ng-model="searchText" placeholder="Recommendee's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Select</button>
+          </div>
+        </div>
+        <%# <select name="userId">%>
+        <div class="col-xs-6 col-sm-4" data-ng-repeat="username in usersCtrl.users | filter:searchText">
+        </div>
           <% for(let i = 0; i < users.length; i++) { %>
           <option value="<%=users[i]._id%>"><%=users[i].username%></option>
           <% } %>
-        </select><br/>
+        <%# </select><br/>%>
 				I am recommending: <input type="text" name="recommendeename" /><br/>
         Title: <input type="text" name="title" placeholder="Title"><br/>
 				Recommendation: <textarea name="content"></textarea><br/>
