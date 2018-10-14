@@ -27,17 +27,7 @@
       <main>
         <h2>Recommendation Attributes</h2>
         <form action="/recommendations/<%=recommendation._id%>?_method=PUT" method="post">
-          <select name="recommenderId">
-            <% for(let i = 0; i < recommenders.length; i++) { %>
-            <option value="<%=recommendations[i]._id%>"
-              <% if(recommenders[i]._id.toString() === recommendationRecommender._id.toString()){ %>
-              selected
-            <% } %>
-          >
-              <%=recommenders[i].name%>
-            </option>
-          <% } %>
-          </select><br/>
+    
           <input type="text" name="title" value="<%=recommendation.title%>"/><br/>
           <textarea name="content"><%=recommendation.content%></textarea><br/>
           <input type="submit" value="Update Recommendation"/>
