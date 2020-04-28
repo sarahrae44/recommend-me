@@ -23,6 +23,6 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "method-override": "^2.3.10",
-    "mongoose": "^4.13.7"
+    "mongoose": "^5.7.5"
   }
 }
